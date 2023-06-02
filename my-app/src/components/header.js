@@ -1,20 +1,13 @@
+import React,{ Component } from 'react';
 
-const getTheYear = () => {
-    const newDate = new Date();
-    return newDate.getFullYear();
+class Header extends Component {
+    render() {
+        return (
+            <header>
+                <h1>Logo</h1>
+                <input/>
+            </header>
+        )
+    }
 }
-const getTheTime = () => {
-    const newDate = new Date();
-    return newDate.getHours() + ":" + newDate.getMinutes() + ":" + newDate.getSeconds();
-}
-
-const Header = () => (
-    <>
-        <div>
-            <h3>The date is {getTheYear()}</h3>
-            <h3>The time is {getTheTime()}</h3>
-        </div>
-    </>
-)
-
 export default Header;

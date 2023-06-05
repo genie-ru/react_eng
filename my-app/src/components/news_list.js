@@ -10,7 +10,10 @@ const NewsList = (props) => {
 
     return (
         <>
+            { props.children }
+            { props.children }
             { news } 
+            { props.children }
         </>
     )
 }

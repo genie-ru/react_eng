@@ -10,7 +10,7 @@ const NewsList = (props) => {
 
     return (
         <>
-           { news } 
+            { news } 
         </>
     )
 }

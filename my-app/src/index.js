@@ -55,16 +55,18 @@ class App extends Component {
                     <h1>I am a children</h1>
                 </NewsList>
 
-                { this.state.unmount ? <Life/> : null}
+                { this.state.unmount ?
+                    <Life/>
+                :null}
                 <button
                     onClick={()=> this.setState({unmount:!this.state.unmount})}
                 >
                     Action
                 </button>
+
                 <Footer
                     footerText={footerText}
                 />
-                <Life/>
             </div>
         )
     }

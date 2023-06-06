@@ -1,46 +1,70 @@
-import React, { Component } from 'react';
+import React,{ Component } from "react";
 
 class Life  extends Component {
     constructor(props){
         super(props);
         console.log('1-constructor')
-
-        this.state = {name : 'John'}
+        this.state = {name:'Francis'}
     }
 
-    static getDeriveStateFromProps(props,state){
-        console.log('2-getDeriveStateFromProps')
-        return null
+
+    static getDerivedStateFromProps(props,state){
+        console.log('2-getDerivedStateFromProps');
+        if(state.name === 'Ron'){
+            return {
+                name:'Milhouse'
+            }
+        }
+        return null;
     }
 
-    shouldComponentUpdate(){
-        console.log('x-shouldComponentUpdate')
-        return true
+    shouldComponentUpdate(nextProps,nextState){
+        console.log('x-shouldComponentUpdate');
+        if(nextState.name === 'Steve'){
+            return false
+        }
+        return true;
     }
+
+
+    getSnapshotBeforeUpdate(prevProps,prevState){
+        console.log('x-getSnapshotBeforeUpdate')
+        let age = 20;
+        return age;
+    }
+
+
+    componentDidUpdate(prevProps,prevState, snapshot){
+        console.log('x-componentDidUpdate');
+        // console.log(prevState);
+        // console.log(this.state)
+        console.log(snapshot)
+    }
+
 
     componentDidMount(){
-        console.log('4-componentDidMount')
-
+        console.log('4-componentDidMount');
     }
 
-    composenentWillUnmount(){
-        console.log('x-composenentWillUnmount')
+    componentWillUnmount(){
+        console.log('x-componentWillUnmount');
     }
 
     render(){
-        console.log('3-render')
-        return (
+        console.log('3-render');
+        return(
             <>
+                <hr/>
                 <div>{this.state.name}</div>
-                <button onClick={()=> this.setState({name:'Ron'})}>
-                    Change state
+                <button  onClick={()=> this.setState({name:'Ron'})}>
+                    Change name
                 </button>
             </>
         )
     }
 }
 
-export default Life;
+export default Life
 
 // Reactのコンポーネントは、作成、更新、削除の3つの段階を経ます。それぞれの段階で、特定の関数が実行されます。
 

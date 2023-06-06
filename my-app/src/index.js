@@ -1,46 +1,66 @@
-import React, { Component } from 'react';
+import React,{ Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/styles.css'
-import Newslist from './components/news_list';
 
 import Header from './components/header';
-import JSON from './db.json';
+import NewsList from './components/news_list';
 import Footer from './components/footer';
+import JSON from './db.json';
+
+
 class App extends Component {
 
     state = {
+        active:false,
         news:JSON,
+        filtered:[],
         footerText:'I am a happy footer'
     }
+
+    getKeywords = (event) => {
+        let keywords = event.target.value;
+        let filtered = this.state.news.filter((item)=>{
+            return item.title.indexOf(keywords) > -1
+        });
+
+        this.setState({
+            filtered
+        })
+    }
+
+
+    changeColor = () => {
+        this.setState({
+            active: this.state.active ? false : true
+        })
+    }
+
+
     render(){
-        console.log(this.state.news)
+        const {filtered,news,active,footerText} =  this.state;
+
         return(
             <div className="hey">
-                <Header/>
-                <Newslist
-                    news={this.state.news}
+                <Header
+                    active={active}
+                    changeColor={this.changeColor}
+                    keyword={this.getKeywords}
+                />
+                <NewsList
+                    news={filtered.length === 0 ? news : filtered }
                 >
                     <br/>
-                    <h1>I am children</h1>
-                </Newslist>
+                    <h1>I am a children</h1>
+                </NewsList>
+
 
                 <Footer
-                    footerText={this.state.footerText}
+                    footerText={footerText}
                 />
-            </div>        
+            </div>
         )
     }
 }
-
-// const App = () => {
-
-    
-//     return(
-//         <div className="hey">
-//             <Header/>
-//         </div>
-//     )
-// }
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

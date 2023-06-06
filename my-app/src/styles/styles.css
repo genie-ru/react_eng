@@ -4,27 +4,23 @@ body {
 }
 
 header {
-    background: #03a9f4;
+    background: #03a9fa;
     text-align: center;
 }
 
 .logo {
     color: #fff;
-    font-size: 40px;
     font-family: Anton;
+    font-size: 40px;
 }
 
-.Hi {
-    color:red;
-    font-size: 20px;
-}
 header input {
     font-size: 20px;
-    margin: 20px 0;
+    margin:20px 0px
 }
 
 .news_item {
     padding: 20px;
     box-sizing: border-box;
-    border-bottom: 1px solid #808080;
+    border-bottom: 1px solid grey;
 }

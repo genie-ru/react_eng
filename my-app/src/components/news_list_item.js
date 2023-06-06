@@ -5,7 +5,6 @@ const NewsListItem = ({item}) => {
             <div>
                 {item.feed}
             </div>
-            
         </div>
     )
 }
